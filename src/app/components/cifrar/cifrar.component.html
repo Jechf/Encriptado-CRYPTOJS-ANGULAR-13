@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" placeholder="Ingresa un Key para encriptar"
                     [(ngModel)]="encPass">
             </div>
-            <textarea class="form-control my-2" readonly rows="3">{{textoEncriptado}}</textarea>
+            <textarea class="form-control my-2" readonly rows="3">{{objenc}}</textarea>
             <br>
             <button type="button" class="btn btn-success float-right"
                 (click)="convertirTexto('encriptar')">Encriptar</button>
@@ -42,6 +42,8 @@
         </div>
     </div>
 </div>
-
-<h3>{{hash}}</h3>
-<h3>{{hash2}}</h3>
+<div class="card p-5 mx-5 mb-4" style="text-align: center;">
+    <h6><strong>Resultado esperado:</strong> LIajK1Slvz878y13gQOoA==</h6>
+    <h5><strong>Hash Sha 256:</strong> {{hash}}</h5>
+    <h5><strong>Hash Sha256 Base64:</strong> {{hash2}}</h5>
+</div>

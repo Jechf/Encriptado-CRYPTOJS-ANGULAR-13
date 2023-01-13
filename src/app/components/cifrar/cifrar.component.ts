@@ -16,28 +16,25 @@ export class CifrarComponent implements OnInit {
   textoDesencriptado: string | undefined;
   textoEncriptado: string | undefined;
   hash: any;
-  hash2: string | undefined;
+  hash2!: string;
   iv = CryptoJS.lib.WordArray.create(undefined,16);
   enctex2: any;
   constructor() { }
 
-  convertirTexto(conversion: string){
+  convertirTexto(conversion: any){
     if(conversion === 'encriptar'){
 
-      // A11103402525120190822HB01
       // 584241513063
-      //resultado esperado: LIajK1Slvz878y13gQOoA==
-      
-      this.hash = CryptoJS.SHA256(this.encPass.trim());
-      this.hash2 = this.hash.toString(CrytoJS.enc.Base64); //resulta igual al ejemplo de C#
-      
-      this.objenc = CrytoJS.AES.encrypt(this.enctexto.trim(), this.hash, {
+      // A11103402525120190822HB01
+      //resultado esperado: LIajK1Slvz878y13gQOoA== 
+      this.hash = CrytoJS.SHA256(this.encPass);
+      this.objenc = CrytoJS.AES.encrypt(JSON.stringify(this.enctexto.trim()), this.hash, {
         iv: this.iv,
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
       })
 
-      this.textoEncriptado = this.objenc.toString((CryptoJS.enc.Utf8))
+      this.textoEncriptado = this.objenc.toString();
 
 
     }else{

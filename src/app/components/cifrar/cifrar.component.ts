@@ -18,7 +18,7 @@ export class CifrarComponent implements OnInit {
   hash: any;
   hash2: string | undefined;
   iv = CryptoJS.lib.WordArray.create(undefined,16);
-  
+  enctex2: any;
   constructor() { }
 
   convertirTexto(conversion: string){
@@ -31,7 +31,6 @@ export class CifrarComponent implements OnInit {
       this.hash = CryptoJS.SHA256(this.encPass.trim());
       this.hash2 = this.hash.toString(CrytoJS.enc.Base64); //resulta igual al ejemplo de C#
       
-
       this.objenc = CrytoJS.AES.encrypt(this.enctexto.trim(), this.hash, {
         iv: this.iv,
         mode: CryptoJS.mode.CBC,

@@ -27,10 +27,11 @@ export class CifrarComponent implements OnInit {
       // 584241513063
       // A11103402525120190822HB01
       //resultado esperado: LIajK1Slvz878y13gQOoA== 
-      this.hash = CrytoJS.SHA256(this.encPass);
+      this.hash = CrytoJS.SHA256(this.encPass).toString();
+
       this.objenc = CrytoJS.AES.encrypt(JSON.stringify(this.enctexto.trim()), this.hash, {
         iv: this.iv,
-        mode: CryptoJS.mode.CBC,
+        mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
       })
 
